@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Canvas 2 Quizlet",
+  "version": "1.0",
+  "description": "Looks at an already-taken canvas quiz and gives you the question and correct answer so you can paste it into quizlet to make a study set.",
+  "homepage_url": "",
+  "icons": {
+    "48": "icons/logo.svg"
+  },
+  "permissions": ["activeTab"],
+  "browser_action": {
+    "default_icon": "icons/logo.svg",
+    "default_title": "C2Q",
+    "default_popup": "popup/choose_beast.html"
+  },
+  "web_accessible_resources": [
+    "beasts/frog.jpg",
+    "beasts/turtle.jpg",
+    "beasts/snake.jpg"
+  ]
+}
