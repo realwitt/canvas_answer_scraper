@@ -3,4 +3,5 @@ hooks/
 info/
 objects/
 refs/
-config/
+config
+HEAD
