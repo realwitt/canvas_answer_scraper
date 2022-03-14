@@ -1,8 +1,9 @@
 // Button Event Listener
-document.addEventListener('DOMContentLoaded', function() {
-  const btn = document.getElementById('scraper');
-  btn.addEventListener('click', function() {
-      scraper();
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("scraper");
+  btn.addEventListener("click", function () {
+    let scrapedList = scraper();
+    newWindowOutput(scrapedList);
   });
 });
 
@@ -31,13 +32,29 @@ function scraper() {
     });
   }
 
-  const canvas = window.open();
+  console.log(listy);
+  return listy;
+}
 
-  canvas.document.write("<pre>");
-  let plz = listy.map((obj) => `${obj.question}\t${obj.answer}\n`);
-  canvas.document.write(plz.join(""));
-  canvas.document.write("</pre>");
+function newWindowOutput(list) {
+  window.open().document.body.innerText = `
+    <p>${list.toString() || `no content`}</p>
+  `;
+  // const outputText = document.createElement("p");
 
-  navigator.clipboard.writeText(plz.join(""));
-  canvas.alert("Copied answers clipboard");
+  // const listString = list.toString();
+  // if (!listString) {
+  //   outputText.innerHTML = listString;
+  // } else {
+  //   outputText.innerHTML = "it didn't work";
+  // }
+  // document.body.appendChild(outputText);
+
+  // newWindow.document.write("<pre>")
+  // let plz = listy.map((obj) => `${obj.question}\t${obj.answer}\n`);
+  // newWindow.document.write(plz.join(""));
+  // newWindow.document.write("</pre>");
+
+  // navigator.clipboard.writeText(plz.join(""));
+  // canvas.alert("Copied answers clipboard");
 }
