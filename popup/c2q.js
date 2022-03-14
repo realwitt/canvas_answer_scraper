@@ -5,15 +5,18 @@
 function listenForClicks() {
   document.addEventListener("click", (e) => {
     /**
-     * Remove the page-hiding CSS from the active tab,
-     * send a "reset" message to the content script in the active tab.
+     * Insert the page-hiding CSS into the active tab,
+     * then get the beast URL and
+     * send a "beastify" message to the content script in the active tab.
      */
-    function reset(tabs) {
-      browser.tabs.removeCSS({ code: hidePage }).then(() => {
+    function confirm_scrape(tabs) {
+    //   browser.tabs.insertCSS({ code: hidePage }).then(() => {
+    //     let url = beastNameToURL(e.target.textContent);
         browser.tabs.sendMessage(tabs[0].id, {
-          command: "reset",
+          command: "beastify",
+          beastURL: url,
         });
-      });
+      }});
     }
 
     /**
@@ -27,10 +30,10 @@ function listenForClicks() {
      * Get the active tab,
      * then call "beastify()" or "reset()" as appropriate.
      */
-    if (e.target.classList.contains("beast")) {
+    if (e.target.classList.contains("scraper")) {
       browser.tabs
         .query({ active: true, currentWindow: true })
-        .then(beastify)
+        .then(confirm_scrape)
         .catch(reportError);
     } else if (e.target.classList.contains("reset")) {
       browser.tabs
@@ -38,7 +41,7 @@ function listenForClicks() {
         .then(reset)
         .catch(reportError);
     }
-  });
+  );
 }
 
 /**
@@ -57,6 +60,6 @@ function reportExecuteScriptError(error) {
  * If we couldn't inject the script, handle the error.
  */
 browser.tabs
-  .executeScript({ file: "/content_scripts/beastify.js" })
+  .executeScript({ file: "/content_scripts/scraper.js" })
   .then(listenForClicks)
   .catch(reportExecuteScriptError);
