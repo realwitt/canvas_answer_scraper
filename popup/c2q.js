@@ -37,23 +37,9 @@ function scraper() {
 }
 
 function newWindowOutput(list) {
-  window.open().document.body.innerText = `
+  window.open().document.body.innerHTML = `
     <p>${list.toString() || `no content`}</p>
   `;
-  // const outputText = document.createElement("p");
-
-  // const listString = list.toString();
-  // if (!listString) {
-  //   outputText.innerHTML = listString;
-  // } else {
-  //   outputText.innerHTML = "it didn't work";
-  // }
-  // document.body.appendChild(outputText);
-
-  // newWindow.document.write("<pre>")
-  // let plz = listy.map((obj) => `${obj.question}\t${obj.answer}\n`);
-  // newWindow.document.write(plz.join(""));
-  // newWindow.document.write("</pre>");
 
   // navigator.clipboard.writeText(plz.join(""));
   // canvas.alert("Copied answers clipboard");
