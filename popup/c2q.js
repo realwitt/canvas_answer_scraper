@@ -8,6 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Collect all quesitons and answers from document
+
+// TO REPLICATE BUG:
+//   open new tab and go to a canvas quiz you've taken
+//   run copy/pasted code (it won't work)
+//   set a variable equal to some other querySelector value (i.e. "a = document.querySelectorAll('.header')" and then "console.log(a)" 
+//   console.log() will output the code correctly
+//   delete the "jogger" code you just made and run the original code
+//   original code will magically work
+
 function scraper() {
   // QUESTION AND ANSWER TOGETHER:
   let listy = [];
@@ -36,11 +45,21 @@ function scraper() {
   return listy;
 }
 
-function newWindowOutput(list) {
-  window.open().document.body.innerHTML = `
-    <p>${list.toString() || `no content`}</p>
-  `;
 
-  // navigator.clipboard.writeText(plz.join(""));
-  // canvas.alert("Copied answers clipboard");
+
+// function newWindowOutput(list) {
+//   let content = list.toString();
+//   if (content == "") {
+//     content = "no content";
+//   }
+
+//   // output content to body
+//   window.open().document.body.innerHTML = `
+//     <p>${content || `no content`}</p>
+//   `;
+
+//   // copy to clipboard
+//   navigator.clipboard.writeText(content).then(() => {
+//     alert("content copied successfully");
+//   });
 }

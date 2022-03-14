@@ -6,7 +6,7 @@
   "icons": {
     "48": "icons/logo.svg"
   },
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "clipboardRead", "clipboardWrite"],
   "browser_action": {
     "default_icon": "icons/logo.svg",
     "default_title": "C2Q",
